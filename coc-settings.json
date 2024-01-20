@@ -1,0 +1,72 @@
+{
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "yank.enableCompletion": false,
+    "suggest.completionItemKindLabels": {
+        "constructor": "󰘦",
+        "keyword": "",
+        "variable": "",
+        "value": "",
+        "operator": "",
+        "function": "󰊕",
+        "reference": "",
+        "constant": "",
+        "method": "",
+        "struct": "",
+        "class": "",
+        "interface": "",
+        "text": "",
+        "enum": "",
+        "enumMember": "",
+        "module": "󰕳",
+        "color": "",
+        "property": "",
+        "field": "",
+        "unit": "",
+        "event": "",
+        "file": "",
+        "folder": "",
+        "snippet": "",
+        "typeParameter": "",
+        "default": " "
+    },
+    "suggest.labelMaxLength": 60,
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "󰨄",
+    "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+    "diagnostic.virtualText": true,
+    "diagnostic.enableMessage": "always",
+    "codeLens.enable": true,
+
+    "prettier.tabWidth": 4,
+    "prettier.disableLanguages": ["markdown"],
+
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "100", "-t", "py310"],
+
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnType": true,
+
+    "clangd.arguments": [
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--cross-file-rename",
+        "--enable-config"
+    ],
+
+    "translator.engines": ["bing", "youdao", "haici"],
+
+    "suggest.floatConfig": {
+        "border": true
+    },
+    "diagnostic.floatConfig": {
+        "border": true
+    },
+    "signature.floatConfig": {
+        "border": true
+    },
+    "hover.floatConfig": {
+        "border": true
+    }
+}
