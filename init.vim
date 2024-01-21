@@ -34,13 +34,16 @@ lua require("basic")
 lua require("plugin-config/nvim-tree")
 lua require("plugin-config/nvim-treesitter")
 lua require("plugin-config/coc")
-" lua require("plugin-config/dashboard")
 lua require("plugin-config/alpha")
 lua require("plugin-config/telescope")
 lua require("plugin-config/project")
 lua require("plugin-config/bufferline")
 lua require("colorizer").setup()
 lua require("scrollbar").setup()
+lua require("plugin-config/ufo")
+lua require("nvim-lastplace").setup()
+lua require("plugin-config/tabout")
+lua require("colorful-winsep").setup()
 
 let g:floaterm_shell = 'zsh'
 let g:floaterm_width = 0.9
@@ -152,13 +155,13 @@ nnoremap <Leader>i :call InitCpp()<CR>
 function! Compile_and_run()
     exec "w"
     if &filetype == 'c'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && gcc %:t -o %:t:r && ./%:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && gcc %:t -O2 -o %:t:r && ./%:t:r"
     elseif &filetype == 'cpp'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && g++ %:t -o %:t:r && ./%:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && g++ %:t -O2 -o %:t:r && ./%:t:r"
     elseif &filetype == 'java'
         exec "AsyncRun -mode=term -pos=right cd %:p:h && javac %:t -d ../out && java %:t:r"
     elseif &filetype == 'python'
-        exec "AsyncRun -mode=term -pos=right python3 %"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && python3 %:t"
     elseif &filetype == 'rust'
         exec "AsyncRun -mode=term -pos=right cargo run"
     elseif &filetype == 'cmake'

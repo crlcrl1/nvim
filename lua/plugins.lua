@@ -54,4 +54,8 @@ return require('packer').startup(function(use)
     use 'github/copilot.vim'
     use 'makerj/vim-pdf'
     use 'skywind3000/asyncrun.vim'
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+    use 'ethanholz/nvim-lastplace'
+    use 'abecodes/tabout.nvim'
+    use 'nvim-zh/colorful-winsep.nvim'
 end)

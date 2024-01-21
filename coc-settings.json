@@ -68,5 +68,10 @@
     },
     "hover.floatConfig": {
         "border": true
-    }
+    },
+
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "$HOME/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips"
+    ]
 }

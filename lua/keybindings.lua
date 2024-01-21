@@ -11,7 +11,12 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opts)
 map("n", "<F10>", ":FloatermKill<CR>", opts)
 
-local pluginKeys = {}
+map("n", "<A-l>", "<C-w>l", opts)
+map("n", "<A-h>", "<C-w>h", opts)
+map("n", "<A-j>", "<C-w>j", opts)
+map("n", "<A-k>", "<C-w>k", opts)
+map("n", "<A-.>", "<C-w>>", opts)
+map("n", "<A-,>", "<C-w><", opts)
 
 map('n', '<C-u>', ':nohlsearch<CR>', opts)
 
