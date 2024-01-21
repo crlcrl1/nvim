@@ -155,11 +155,11 @@ nnoremap <Leader>i :call InitCpp()<CR>
 function! Compile_and_run()
     exec "w"
     if &filetype == 'c'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && gcc %:t -O2 -o %:t:r && ./%:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with gcc...\\033[0m\\n\" && gcc %:t -O2 -o %:t:r && echo \"\\033[36mRunning the program...\\033[0m\\n\" && ./%:t:r"
     elseif &filetype == 'cpp'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && g++ %:t -O2 -o %:t:r && ./%:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with g++...\\033[0m\\n\" && g++ %:t -O2 -o %:t:r && echo \"\\033[36mRunning the program...\\033[0m\\n\" && ./%:t:r"
     elseif &filetype == 'java'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && javac %:t -d ../out && java %:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with javac...\\033[0m\\n\" && javac %:t -d ../out && cd ../out && echo \"\\033[36mRunning the program...\\033[0m\\n\" && java %:t:r"
     elseif &filetype == 'python'
         exec "AsyncRun -mode=term -pos=right cd %:p:h && python3 %:t"
     elseif &filetype == 'rust'
@@ -168,9 +168,13 @@ function! Compile_and_run()
         if empty(glob('%:p:h/build/'))
             silent exec "!mkdir %:p:h/build/"
         endif
-        exec "AsyncRun -mode=term -pos=right cd %:p:h/build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja && cmake --build ."
+        exec "AsyncRun -mode=term -pos=right cd %:p:h/build && echo \"\\033[36mConfigurating the project...\\033[0m\\n\" && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja && echo \"\\033[36mCompiling...\\033[0m\\n\" && cmake --build ."
+    elseif &filetype == 'make'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mRunning make clean...\\033[0m\\n\" && make clean && echo \"\\033[36mmaking...\\033[0m\\n\" && make"
     elseif &filetype == 'markdown'
         exec "CocCommand markdown-preview-enhanced.openPreview"
+    elseif &filetype == 'cuda'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with nvcc...\\033[0m\\n\" && nvcc %:t -o %:t:r && echo \"\\033[36mRunning the program...\\033[0m\\n\" && ./%:t:r"
     endif
 endfunction
 
