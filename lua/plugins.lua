@@ -36,7 +36,6 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'liuchengxu/vista.vim'
     use 'goolord/alpha-nvim'
-    -- use 'glepnir/dashboard-nvim'
     use 'ahmedkhalf/project.nvim'
     use 'preservim/nerdcommenter'
     use 'dhruvasagar/vim-table-mode'
@@ -58,4 +57,16 @@ return require('packer').startup(function(use)
     use 'ethanholz/nvim-lastplace'
     use 'abecodes/tabout.nvim'
     use 'nvim-zh/colorful-winsep.nvim'
+    use 'luukvbaal/statuscol.nvim'
+    use {
+        "utilyre/sentiment.nvim",
+        tag = "*",
+    }
+
+    -- Debuggers
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
+    use "nvim-telescope/telescope-dap.nvim"
+    use 'LiadOz/nvim-dap-repl-highlights'
 end)

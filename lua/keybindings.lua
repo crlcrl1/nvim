@@ -23,3 +23,30 @@ map('n', '<C-u>', ':nohlsearch<CR>', opts)
 map('n', '<A-f>', ':Telescope find_files<CR>', opts)
 
 map('n', '<C-q>', ':bw!<CR>', opts)
+
+
+map(
+    'n',
+    'Q',
+    ":lua require'dap'.close()<CR>"
+    .. ":lua require'dap'.terminate()<CR>"
+    .. ":lua require'dap.repl'.close()<CR>"
+    .. ":lua require'dapui'.close()<CR>",
+    opts
+)
+-- Start or continue debugging
+map('n', '<F5>', ":lua require'dap'.continue()<CR>", opts)
+-- Toggle breakpoint
+map('n', '<F6>', ":lua require'dap'.toggle_breakpoint()<CR>", opts)
+--  stepOver, stepOut, stepInto
+map('n', '<F2>', ":lua require'dap'.step_over()<CR>", opts)
+map('n', '<F4>', ":lua require'dap'.step_out()<CR>", opts)
+map('n', '<F3>', ":lua require'dap'.step_into()<CR>", opts)
+-- Check variables
+map('n', '<Leader>E', ":lua require'dapui'.eval()<CR>", opts)
+map('n', '<C-c>', ":lua require('dap').run_to_cursor()<CR>", opts)
+
+-- Set conditional breakpoint
+map('n', '<Leader>b', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+-- Restart
+map('n', '<A-r>', ":lua require'dap'.restart()<CR>", opts)

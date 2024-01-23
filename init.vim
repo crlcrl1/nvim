@@ -44,6 +44,15 @@ lua require("plugin-config/ufo")
 lua require("nvim-lastplace").setup()
 lua require("plugin-config/tabout")
 lua require("colorful-winsep").setup()
+lua require("plugin-config/statuscol")
+lua require("sentiment").setup()
+
+lua require("debuggers/dap")
+lua require("debuggers/cpp")
+lua require("debuggers/ui")
+lua require("debuggers/python")
+lua require("debuggers/java")
+lua require('nvim-dap-repl-highlights').setup()
 
 let g:floaterm_shell = 'zsh'
 let g:floaterm_width = 0.9
@@ -163,7 +172,33 @@ function! Compile_and_run()
     elseif &filetype == 'python'
         exec "AsyncRun -mode=term -pos=right cd %:p:h && python3 %:t"
     elseif &filetype == 'rust'
-        exec "AsyncRun -mode=term -pos=right cargo run"
+        exec "AsyncRun -mode=term -pos=right cargo run --release"
+    elseif &filetype == 'cmake'
+        if empty(glob('%:p:h/build/'))
+            silent exec "!mkdir %:p:h/build/"
+        endif
+        exec "AsyncRun -mode=term -pos=right cd %:p:h/build && echo \"\\033[36mConfigurating the project...\\033[0m\\n\" && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja && echo \"\\033[36mCompiling...\\033[0m\\n\" && cmake --build . -j20"
+    elseif &filetype == 'make'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mRunning make clean...\\033[0m\\n\" && make clean && echo \"\\033[36mmaking...\\033[0m\\n\" && make"
+    elseif &filetype == 'markdown'
+        exec "CocCommand markdown-preview-enhanced.openPreview"
+    elseif &filetype == 'cuda'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with nvcc...\\033[0m\\n\" && nvcc %:t -o %:t:r -g && echo \"\\033[36mRunning the program...\\033[0m\\n\" && ./%:t:r"
+    endif
+endfunction
+
+nnoremap <Leader>R :call Compile_and_run()<CR>
+
+function! Compile_for_debugging()
+    exec "w"
+    if &filetype == 'c'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with gcc...\\033[0m\\n\" && gcc %:t -O0 -g -o %:t:r"
+    elseif &filetype == 'cpp'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with g++...\\033[0m\\n\" && g++ %:t -O0 -g -o %:t:r"
+    elseif &filetype == 'java'
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with javac...\\033[0m\\n\" && javac %:t -d ../out"
+    elseif &filetype == 'rust'
+        exec "AsyncRun -mode=term -pos=right cargo build"
     elseif &filetype == 'cmake'
         if empty(glob('%:p:h/build/'))
             silent exec "!mkdir %:p:h/build/"
@@ -171,11 +206,9 @@ function! Compile_and_run()
         exec "AsyncRun -mode=term -pos=right cd %:p:h/build && echo \"\\033[36mConfigurating the project...\\033[0m\\n\" && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja && echo \"\\033[36mCompiling...\\033[0m\\n\" && cmake --build ."
     elseif &filetype == 'make'
         exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mRunning make clean...\\033[0m\\n\" && make clean && echo \"\\033[36mmaking...\\033[0m\\n\" && make"
-    elseif &filetype == 'markdown'
-        exec "CocCommand markdown-preview-enhanced.openPreview"
     elseif &filetype == 'cuda'
-        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with nvcc...\\033[0m\\n\" && nvcc %:t -o %:t:r && echo \"\\033[36mRunning the program...\\033[0m\\n\" && ./%:t:r"
+        exec "AsyncRun -mode=term -pos=right cd %:p:h && echo \"\\033[36mCompiling with nvcc...\\033[0m\\n\" && nvcc %:t -o %:t:r -g -O0"
     endif
 endfunction
 
-nnoremap <F5> :call Compile_and_run()<CR>
+nnoremap <C-g> :call Compile_for_debugging()<CR>
