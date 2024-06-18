@@ -39,6 +39,36 @@
     "diagnostic.enableMessage": "always",
     "codeLens.enable": true,
 
+    "suggest.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "diagnostic.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "signature.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "hover.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "git.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "cmake.formatter_args": ["--tab-size=4"],
+    "colors.enable": true,
+
+    "list.floatPreview": true,
+
+    "semanticTokens.enable": true,
+    "[python]": {
+        "semanticTokens.enable": false
+    },
+
     "prettier.tabWidth": 4,
     "prettier.disableLanguages": ["markdown"],
 
@@ -55,23 +85,11 @@
         "--enable-config"
     ],
 
-    "translator.engines": ["bing", "youdao", "haici"],
-
-    "suggest.floatConfig": {
-        "border": true
-    },
-    "diagnostic.floatConfig": {
-        "border": true
-    },
-    "signature.floatConfig": {
-        "border": true
-    },
-    "hover.floatConfig": {
-        "border": true
-    },
-
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "$HOME/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips"
-    ]
+    ],
+
+    "sumneko-lua.enableNvimLuaDev": true,
+    "snippets.ultisnips.pythonPrompt": false
 }

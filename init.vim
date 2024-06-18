@@ -24,7 +24,6 @@ set wildmenu
 set pumheight=10
 set pumwidth=40
 
-" colorscheme moonfly
 colorscheme arctic
 
 let g:moonflyCursorColor = v:true
@@ -39,13 +38,17 @@ lua require("plugin-config/telescope")
 lua require("plugin-config/project")
 lua require("plugin-config/bufferline")
 lua require("colorizer").setup()
-lua require("scrollbar").setup()
 lua require("plugin-config/ufo")
 lua require("nvim-lastplace").setup()
 lua require("plugin-config/tabout")
-lua require("colorful-winsep").setup()
 lua require("plugin-config/statuscol")
 lua require("sentiment").setup()
+lua require("plugin-config/notify")
+lua require("plugin-config/noice")
+lua require("plugin-config/lualine")
+lua require("plugin-config/comment")
+lua require("plugin-config/indent-blankline")
+lua require("plugin-config/copilot-chat")
 
 lua require("debuggers/dap")
 lua require("debuggers/cpp")
@@ -53,6 +56,7 @@ lua require("debuggers/ui")
 lua require("debuggers/python")
 lua require("debuggers/java")
 lua require('nvim-dap-repl-highlights').setup()
+
 
 let g:floaterm_shell = 'zsh'
 let g:floaterm_width = 0.9
@@ -62,29 +66,12 @@ let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
 
-nmap <C-s> :w<CR>
-imap <C-s> <Esc>:w<CR>i
+nmap <silent> <C-s> :w<CR>
+imap <silent> <C-s> <Esc>:w<CR>i
 
-let g:airline#extensions#coc#enabled = 1
-let airline#extensions#coc#error_symbol = ' '
-let airline#extensions#coc#warning_symbol = ' '
-let g:airline#extensions#coc#show_coc_status = 1
-let airline#extensions#coc#stl_format_err = '%C(L%L)'
-let airline#extensions#coc#stl_format_warn = '%C(L%L)'
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_theme = 'jellybeans'
 
-noremap <leader>tm :TableModeToggle<CR>
+noremap <silent> <leader>tm :TableModeToggle<CR>
 "let g:table_mode_disable_mappings = 1
-let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 
 " popup
 nmap <leader>t <Plug>(coc-translator-p)
@@ -105,24 +92,17 @@ let g:NERDDefaultAlign = 'left'
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " ------------------------------ vista.vim --------------------------------------
-function! NearestMethodOrFunction() abort
-    return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
+let g:vista_sidebar_width = 35
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_floating_border = "rounded"
+let g:vista_cursor_delay=0
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
             \   "function": "\u0192",
             \   "variable": "",
+            \   "constructor": "󰘦",
             \  }
 nnoremap <silent><nowait> <space>m :Vista!!<cr>
 
@@ -140,7 +120,22 @@ xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 
-nnoremap <Leader>gv :Gvdiffsplit<CR>
+nnoremap <silent> <Leader>gv :Gvdiffsplit<CR>
+
+let g:transparent_groups = ['Normal', 'Comment', 'Constant', 'Special', 'Identifier',
+            \ 'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String',
+            \ 'LineNr', 'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer']
+" Pmenu
+let g:transparent_groups += ['Pmenu']
+
+" coc.nvim
+let g:transparent_groups += ['NormalFloat', 'CocFloating']
+
+" bufferline.nvim
+let g:transparent_groups += ['BufferLineFill']
+
+" lualine
+" let g:transparent_groups += ['lualine']
 
 function! InitCpp()
     if &filetype == 'cmake'
@@ -159,7 +154,7 @@ function! InitCpp()
     endif
 endfunction
 
-nnoremap <Leader>i :call InitCpp()<CR>
+nnoremap <silent> <Leader>i :call InitCpp()<CR>
 
 function! Compile_and_run()
     exec "w"
@@ -187,7 +182,7 @@ function! Compile_and_run()
     endif
 endfunction
 
-nnoremap <Leader>R :call Compile_and_run()<CR>
+nnoremap <silent> <Leader>r :call Compile_and_run()<CR>
 
 function! Compile_for_debugging()
     exec "w"
@@ -211,4 +206,6 @@ function! Compile_for_debugging()
     endif
 endfunction
 
-nnoremap <C-g> :call Compile_for_debugging()<CR>
+nnoremap <silent> <C-g> :call Compile_for_debugging()<CR>
+
+

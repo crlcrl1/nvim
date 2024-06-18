@@ -50,3 +50,5 @@ map('n', '<C-c>', ":lua require('dap').run_to_cursor()<CR>", opts)
 map('n', '<Leader>b', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 -- Restart
 map('n', '<A-r>', ":lua require'dap'.restart()<CR>", opts)
+
+map('n', '<A-c>', ':CopilotChatToggle<CR>', opts)

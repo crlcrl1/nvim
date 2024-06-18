@@ -13,14 +13,22 @@ return require('packer').startup(function(use)
     use "rebelot/kanagawa.nvim"
     use { "bluz71/vim-moonfly-colors", as = 'moonfly' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'nvim-neotest/nvim-nio' }
 
+    use {
+        'folke/noice.nvim',
+        requires = 'rcarriga/nvim-notify'
+    }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }
+    use 'JMarkin/nvim-tree.lua-float-preview'
     use 'jiangmiao/auto-pairs'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
     use 'HiPhish/rainbow-delimiters.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'voldikss/vim-floaterm'
@@ -37,9 +45,8 @@ return require('packer').startup(function(use)
     use 'liuchengxu/vista.vim'
     use 'goolord/alpha-nvim'
     use 'ahmedkhalf/project.nvim'
-    use 'preservim/nerdcommenter'
+    use 'numToStr/Comment.nvim'
     use 'dhruvasagar/vim-table-mode'
-    use 'petertriho/nvim-scrollbar'
     use {
         'neoclide/coc.nvim',
         branch = 'release'
@@ -56,12 +63,13 @@ return require('packer').startup(function(use)
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use 'ethanholz/nvim-lastplace'
     use 'abecodes/tabout.nvim'
-    use 'nvim-zh/colorful-winsep.nvim'
     use 'luukvbaal/statuscol.nvim'
     use {
         "utilyre/sentiment.nvim",
         tag = "*",
     }
+    use 'tribela/vim-transparent'
+    use 'CopilotC-Nvim/CopilotChat.nvim'
 
     -- Debuggers
     use "mfussenegger/nvim-dap"

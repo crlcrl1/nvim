@@ -22,7 +22,7 @@ dap.adapters.python = function(cb, config)
     else
         cb({
             type = 'executable',
-            command = '/home/linuxbrew/.linuxbrew/bin/python3',
+            command = '/usr/bin/python',
             args = { '-m', 'debugpy.adapter' },
             options = {
                 source_filetype = 'python',
@@ -30,15 +30,3 @@ dap.adapters.python = function(cb, config)
         })
     end
 end
-
--- TODO: configure java debugging
--- dap.adapters.java = function(callback)
---     -- FIXME:
---     -- Here a function needs to trigger the `vscode.java.startDebugSession` LSP command
---     -- The response to the command must be the `port` used below
---     callback({
---         type = 'server',
---         host = '127.0.0.1',
---         port = port,
---     })
--- end

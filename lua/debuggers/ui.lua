@@ -17,25 +17,40 @@ require("nvim-dap-virtual-text").setup({
     virt_text_win_col = nil
 })
 
-vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0 })
-vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0 })
-vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, })
+local dap_breakpoint_color = {
+    breakpoint = {
+        ctermbg = 0,
+        bg = '#690808'
+    },
+    logpoing = {
+        ctermbg = 0,
+        bg = '#61afef'
+    },
+    stopped = {
+        ctermbg = 0,
+        bg = '#186E00'
+    },
+}
+
+vim.api.nvim_set_hl(0, 'DapBreakpoint', dap_breakpoint_color.breakpoint)
+vim.api.nvim_set_hl(0, 'DapLogPoint', dap_breakpoint_color.logpoing)
+vim.api.nvim_set_hl(0, 'DapStopped', dap_breakpoint_color.stopped)
 
 local dap_breakpoint = {
     error = {
-        text = "🔴",
+        text = "",
         texthl = "DapBreakpoint",
         linehl = "DapBreakpoint",
         numhl = "DapBreakpoint",
     },
     condition = {
-        text = '🟡',
+        text = '',
         texthl = 'DapBreakpoint',
         linehl = 'DapBreakpoint',
         numhl = 'DapBreakpoint',
     },
     rejected = {
-        text = "⭕",
+        text = "",
         texthl = "DapBreakpint",
         linehl = "DapBreakpoint",
         numhl = "DapBreakpoint",
@@ -87,7 +102,7 @@ dapui.setup({
                 "breakpoints",
                 "scopes",
             },
-            size = 0.25,
+            size = 0.30,
             position = "left",
         },
         {
