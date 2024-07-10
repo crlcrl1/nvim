@@ -18,3 +18,11 @@ vim.cmd [[
 vim.cmd [[
     autocmd BufWrite * lua require("nvim-tree.diagnostics").update()
 ]]
+
+if vim.g.neovide then
+    vim.o.guifont = "JetBrainsMono Nerd Font:h23"
+    vim.opt.linespace = 0
+    vim.g.neovide_transparency = 0.7
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_refresh_rate = 165
+end

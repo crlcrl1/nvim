@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use 'ethanholz/nvim-lastplace'
     use 'abecodes/tabout.nvim'
-    use 'luukvbaal/statuscol.nvim'
+    -- use 'luukvbaal/statuscol.nvim'
     use {
         "utilyre/sentiment.nvim",
         tag = "*",
