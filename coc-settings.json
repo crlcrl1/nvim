@@ -1,4 +1,7 @@
 {
+    "codeLens.position": "eol",
+    "codeLens.separator": "\t",
+    "inlayHint.refreshOnInsertMode": true,
     "markdown-preview-enhanced.previewTheme": "github-dark.css",
     "yank.enableCompletion": false,
     "suggest.completionItemKindLabels": {
@@ -68,6 +71,27 @@
     "[python]": {
         "semanticTokens.enable": false
     },
+    "[rust]": {
+        "semanticTokens.enable": false
+    },
+    "clangd.compilationDatabaseCandidates": [
+        "${workspaceFolder}/Release",
+        "${workspaceFolder}/Debug",
+        "${workspaceFolder}/build",
+        "${workspaceFolder}"
+    ],
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "~/.sdkman/candidates/java/17.0.11-oracle"
+        },
+        {
+            "name": "JavaSE-21",
+            "path": "~/.sdkman/candidates/java/21.0.3-graal",
+            "default": true
+        }
+    ],
+    "java.saveActions.organizeImports": true,
 
     "prettier.tabWidth": 4,
     "prettier.disableLanguages": ["markdown"],
@@ -91,5 +115,8 @@
     ],
 
     "sumneko-lua.enableNvimLuaDev": true,
-    "snippets.ultisnips.pythonPrompt": false
+    "snippets.ultisnips.pythonPrompt": false,
+    "zig.zls.path": "zls",
+    "zig.zls.useComptimeInterpreter": true,
+    "zig.zls.checkForUpdate": false
 }

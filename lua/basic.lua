@@ -20,9 +20,12 @@ vim.cmd [[
 ]]
 
 if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono Nerd Font:h23"
+    vim.o.guifont = "JetBrainsMonoNL Nerd Font:h23"
     vim.opt.linespace = 0
-    vim.g.neovide_transparency = 0.7
+    vim.g.neovide_padding_top = 12
     vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_refresh_rate = 165
+    vim.g.neovide_floating_shadow = false
+    vim.g.neovide_cursor_vfx_mode = "pixiedust"
+    vim.g.neovide_cursor_vfx_particle_density = 10.0
 end

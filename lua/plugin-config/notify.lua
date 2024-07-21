@@ -7,6 +7,6 @@ require('notify').setup({
     render = "default",
     background_colour = "Normal",
     max_width = math.floor(vim.api.nvim_win_get_width(0) / 2),
-    max_height = math.floor(vim.api.nvim_win_get_height(0) / 3),
+    max_height = math.floor(vim.api.nvim_win_get_height(0) / 2),
     level = "TRACE",
 })

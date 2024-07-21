@@ -7,11 +7,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
     use {
-        "rockyzhang24/arctic.nvim",
+        "crlcrl1/arctic.nvim",
         requires = { "rktjmp/lush.nvim" }
     }
-    use "rebelot/kanagawa.nvim"
-    use { "bluz71/vim-moonfly-colors", as = 'moonfly' }
+    use 'rebelot/kanagawa.nvim'
+    use { 'bluz71/vim-moonfly-colors', as = 'moonfly' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'nvim-neotest/nvim-nio' }
 
@@ -34,12 +34,10 @@ return require('packer').startup(function(use)
     use 'voldikss/vim-floaterm'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { 'nvim-lua/plenary.nvim' }
     }
     use 'honza/vim-snippets'
-    -- use 'rcarriga/nvim-notify'
     use 'MunifTanjim/nui.nvim'
-    -- use 'folke/noice.nvim'
 
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'liuchengxu/vista.vim'
@@ -72,9 +70,13 @@ return require('packer').startup(function(use)
     use 'CopilotC-Nvim/CopilotChat.nvim'
 
     -- Debuggers
-    use "mfussenegger/nvim-dap"
-    use "rcarriga/nvim-dap-ui"
-    use "theHamsta/nvim-dap-virtual-text"
-    use "nvim-telescope/telescope-dap.nvim"
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
     use 'LiadOz/nvim-dap-repl-highlights'
+    use {
+        'stevearc/overseer.nvim',
+        requires = 'stevearc/dressing.nvim',
+    }
 end)

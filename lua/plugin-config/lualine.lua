@@ -27,7 +27,7 @@ local config = {
                 cond = require("noice").api.statusline.mode.has,
                 color = { fg = "#ff9e64" },
             },
-            'encoding', 'fileformat', 'filetype',
+            'encoding', 'fileformat', 'filetype', 'overseer'
         },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }

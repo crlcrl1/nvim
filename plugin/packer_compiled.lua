@@ -102,7 +102,7 @@ _G.packer_plugins = {
   ["arctic.nvim"] = {
     loaded = true,
     path = "/home/crl/.local/share/nvim/site/pack/packer/start/arctic.nvim",
-    url = "https://github.com/rockyzhang24/arctic.nvim"
+    url = "https://github.com/crlcrl1/arctic.nvim"
   },
   ["asyncrun.vim"] = {
     loaded = true,
@@ -128,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/crl/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/home/crl/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
@@ -233,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/crl/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["overseer.nvim"] = {
+    loaded = true,
+    path = "/home/crl/.local/share/nvim/site/pack/packer/start/overseer.nvim",
+    url = "https://github.com/stevearc/overseer.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
