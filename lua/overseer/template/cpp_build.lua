@@ -16,7 +16,7 @@ return {
         end
         return {
             cmd = { compiler },
-            args = { file, "-o", output_file },
+            args = { file, "-o", output_file, "-g" },
             components = { "default" },
         }
     end,

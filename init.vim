@@ -141,3 +141,5 @@ endif
 " lualine
 " let g:transparent_groups += ['lualine']
 
+autocmd BufEnter *.rs hi CocSemTypeMacro guifg=#FFC0A0
+autocmd BufLeave *.rs hi CocSemTypeMacro guifg=#C56FFF

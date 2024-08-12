@@ -71,9 +71,6 @@
     "[python]": {
         "semanticTokens.enable": false
     },
-    "[rust]": {
-        "semanticTokens.enable": false
-    },
     "clangd.compilationDatabaseCandidates": [
         "${workspaceFolder}/Release",
         "${workspaceFolder}/Debug",
