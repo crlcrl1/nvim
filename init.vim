@@ -23,14 +23,16 @@ set wildmenu
 
 set pumheight=10
 set pumwidth=40
+set nowrap
+
+lua require("plugins")
 
 colorscheme arctic
 
 let g:moonflyCursorColor = v:true
-lua require("plugins")
 lua require("keybindings")
 lua require("basic")
-lua require("plugin-config/nvim-tree")
+" lua require("plugin-config/nvim-tree")
 lua require("plugin-config/nvim-treesitter")
 lua require("plugin-config/coc")
 lua require("plugin-config/alpha")
@@ -48,14 +50,15 @@ lua require("plugin-config/lualine")
 lua require("plugin-config/comment")
 lua require("plugin-config/indent-blankline")
 lua require("plugin-config/copilot-chat")
-lua require("plugin-config/overseer")
+" lua require("plugin-config/overseer")
+lua require("plugin-config/remote")
 
 lua require("debuggers/dap")
 lua require("debuggers/cpp")
 lua require("debuggers/ui")
 lua require("debuggers/python")
 lua require("debuggers/java")
-lua require('nvim-dap-repl-highlights').setup()
+lua require("nvim-dap-repl-highlights").setup()
 
 
 let g:floaterm_shell = 'zsh'
@@ -143,3 +146,5 @@ endif
 
 autocmd BufEnter *.rs hi CocSemTypeMacro guifg=#FFC0A0
 autocmd BufLeave *.rs hi CocSemTypeMacro guifg=#C56FFF
+au BufNewFile,BufRead *.wgsl set filetype=wgsl
+au BufNewFile,BufRead *.ll set filetype=llvm

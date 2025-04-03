@@ -1,82 +1,114 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+local function bootstrap_pckr()
+    local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+    if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+        vim.fn.system({
+            'git',
+            'clone',
+            "--filter=blob:none",
+            'https://github.com/lewis6991/pckr.nvim',
+            pckr_path
+        })
+    end
 
-return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
-    use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-    use {
+    vim.opt.rtp:prepend(pckr_path)
+end
+
+bootstrap_pckr()
+
+local cmd = require('pckr.loader.cmd')
+local keys = require('pckr.loader.keys')
+
+require('pckr').add {
+    {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+    },
+    {
         "crlcrl1/arctic.nvim",
         requires = { "rktjmp/lush.nvim" }
-    }
-    use 'rebelot/kanagawa.nvim'
-    use { 'bluz71/vim-moonfly-colors', as = 'moonfly' }
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'nvim-neotest/nvim-nio' }
+    },
+    'rebelot/kanagawa.nvim',
+    { 'bluz71/vim-moonfly-colors',       as = 'moonfly' },
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+    { 'nvim-neotest/nvim-nio' },
 
-    use {
+    {
         'folke/noice.nvim',
         requires = 'rcarriga/nvim-notify'
-    }
-    use {
+    },
+    {
         'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
-    use 'JMarkin/nvim-tree.lua-float-preview'
-    use 'jiangmiao/auto-pairs'
-    use {
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require("plugin-config/nvim-tree")
+        end,
+        -- cond = keys('n', '<A-e>')
+    },
+    {
+        'JMarkin/nvim-tree.lua-float-preview',
+        -- cond = keys('n', '<A-e>')
+    },
+    'jiangmiao/auto-pairs',
+    {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
-    use 'HiPhish/rainbow-delimiters.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'voldikss/vim-floaterm'
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    },
+    'HiPhish/rainbow-delimiters.nvim',
+    'lukas-reineke/indent-blankline.nvim',
+    'voldikss/vim-floaterm',
+    {
+        'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim' }
-    }
-    use 'honza/vim-snippets'
-    use 'MunifTanjim/nui.nvim'
+    },
+    'honza/vim-snippets',
+    'MunifTanjim/nui.nvim',
 
-    use 'nvim-treesitter/nvim-treesitter-context'
-    use 'liuchengxu/vista.vim'
-    use 'goolord/alpha-nvim'
-    use 'ahmedkhalf/project.nvim'
-    use 'numToStr/Comment.nvim'
-    use 'dhruvasagar/vim-table-mode'
-    use {
+    'nvim-treesitter/nvim-treesitter-context',
+    'liuchengxu/vista.vim',
+    'goolord/alpha-nvim',
+    'ahmedkhalf/project.nvim',
+    'numToStr/Comment.nvim',
+    'dhruvasagar/vim-table-mode',
+    {
         'neoclide/coc.nvim',
         branch = 'release'
-    }
-    use 'vim-scripts/DoxygenToolkit.vim'
-    use 'norcalli/nvim-colorizer.lua'
-    use 'awelormro/Todo-highlight.vim'
-    use 'tpope/vim-surround'
-    use 'tpope/vim-fugitive'
-    use 'gcmt/wildfire.vim'
-    use 'github/copilot.vim'
-    use 'makerj/vim-pdf'
-    use 'skywind3000/asyncrun.vim'
-    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
-    use 'ethanholz/nvim-lastplace'
-    use 'abecodes/tabout.nvim'
+    },
+    'vim-scripts/DoxygenToolkit.vim',
+    'norcalli/nvim-colorizer.lua',
+    'awelormro/Todo-highlight.vim',
+    'tpope/vim-surround',
+    'tpope/vim-fugitive',
+    'gcmt/wildfire.vim',
+    'github/copilot.vim',
+    'makerj/vim-pdf',
+    'skywind3000/asyncrun.vim',
+    { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' },
+    'ethanholz/nvim-lastplace',
+    'abecodes/tabout.nvim',
     -- use 'luukvbaal/statuscol.nvim'
-    use {
+    {
         "utilyre/sentiment.nvim",
         tag = "*",
-    }
-    use 'tribela/vim-transparent'
-    use 'CopilotC-Nvim/CopilotChat.nvim'
+    },
+    'tribela/vim-transparent',
+    'CopilotC-Nvim/CopilotChat.nvim',
 
     -- Debuggers
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
-    use 'LiadOz/nvim-dap-repl-highlights'
-    use {
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'nvim-telescope/telescope-dap.nvim',
+    'LiadOz/nvim-dap-repl-highlights',
+    {
         'stevearc/overseer.nvim',
         requires = 'stevearc/dressing.nvim',
+        config = function()
+            require("plugin-config/overseer")
+        end
+    },
+    {
+        'amitds1997/remote-nvim.nvim',
+        requires = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim', 'nvim-telescope/telescope.nvim' }
     }
-end)
+}

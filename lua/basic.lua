@@ -16,7 +16,7 @@ vim.cmd [[
 
 
 vim.cmd [[
-    autocmd BufWrite * lua require("nvim-tree.diagnostics").update()
+    autocmd BufWrite * lua require("nvim-tree.diagnostics").update_coc()
 ]]
 
 if vim.g.neovide then

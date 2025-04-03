@@ -69,7 +69,8 @@
 
     "semanticTokens.enable": true,
     "[python]": {
-        "semanticTokens.enable": false
+        "semanticTokens.enable": false,
+        "inlayHint.enable": false
     },
     "clangd.compilationDatabaseCandidates": [
         "${workspaceFolder}/Release",
@@ -79,12 +80,8 @@
     ],
     "java.configuration.runtimes": [
         {
-            "name": "JavaSE-17",
-            "path": "~/.sdkman/candidates/java/17.0.11-oracle"
-        },
-        {
             "name": "JavaSE-21",
-            "path": "~/.sdkman/candidates/java/21.0.3-graal",
+            "path": "~/.sdkman/candidates/java/current",
             "default": true
         }
     ],
@@ -93,7 +90,8 @@
     "prettier.tabWidth": 4,
     "prettier.disableLanguages": ["markdown"],
 
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": ["--max-line-length", "100"],
     "python.formatting.blackArgs": ["--line-length", "100", "-t", "py310"],
 
     "coc.preferences.formatOnSave": true,
@@ -113,7 +111,20 @@
 
     "sumneko-lua.enableNvimLuaDev": true,
     "snippets.ultisnips.pythonPrompt": false,
-    "zig.zls.path": "zls",
-    "zig.zls.useComptimeInterpreter": true,
-    "zig.zls.checkForUpdate": false
+
+    "languageserver": {
+        "termux": {
+            "command": "termux-language-server",
+            "filetypes": ["PKGBUILD"]
+        },
+        "wgsl": {
+            "command": "wgsl-analyzer",
+            "filetypes": ["wgsl"],
+            "initializationOptions": {
+                "inlayHintsConfig": {
+                    "enable": true
+                }
+            }
+        }
+    }
 }

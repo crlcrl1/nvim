@@ -19,7 +19,14 @@ local config = {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { 'branch', 'diff', 'diagnostics', {
+            function()
+                return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
+            end,
+            padding = { right = 1, left = 1 },
+            separator = { left = "", right = "" },
+        },
+        },
         lualine_c = { 'filename', 'g:coc_status', },
         lualine_x = {
             {
