@@ -25,41 +25,11 @@ set pumheight=10
 set pumwidth=40
 set nowrap
 
+lua require("keybindings")
+lua require("basic")
 lua require("plugins")
 
 colorscheme arctic
-
-let g:moonflyCursorColor = v:true
-lua require("keybindings")
-lua require("basic")
-" lua require("plugin-config/nvim-tree")
-lua require("plugin-config/nvim-treesitter")
-lua require("plugin-config/coc")
-lua require("plugin-config/alpha")
-lua require("plugin-config/telescope")
-lua require("plugin-config/project")
-lua require("plugin-config/bufferline")
-lua require("colorizer").setup()
-lua require("plugin-config/ufo")
-lua require("nvim-lastplace").setup()
-lua require("plugin-config/tabout")
-lua require("sentiment").setup()
-lua require("plugin-config/notify")
-lua require("plugin-config/noice")
-lua require("plugin-config/lualine")
-lua require("plugin-config/comment")
-lua require("plugin-config/indent-blankline")
-lua require("plugin-config/copilot-chat")
-" lua require("plugin-config/overseer")
-lua require("plugin-config/remote")
-
-lua require("debuggers/dap")
-lua require("debuggers/cpp")
-lua require("debuggers/ui")
-lua require("debuggers/python")
-lua require("debuggers/java")
-lua require("nvim-dap-repl-highlights").setup()
-
 
 let g:floaterm_shell = 'zsh'
 let g:floaterm_width = 0.9
@@ -67,7 +37,6 @@ let g:floaterm_height = 0.8
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
-let g:floaterm_keymap_toggle = '<F12>'
 
 nmap <silent> <C-s> :w<CR>
 imap <silent> <C-s> <Esc>:w<CR>i
@@ -86,10 +55,7 @@ vmap <leader>e <Plug>(coc-translator-ev)
 nmap <leader>r <Plug>(coc-translator-r)
 vmap <leader>r <Plug>(coc-translator-rv)
 
-" 默认情况下，在注释分隔符后添加空格
 let g:NERDSpaceDelims = 1
-
-" 按行对齐注释分隔符左对齐，而不是按代码缩进
 let g:NERDDefaultAlign = 'left'
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
@@ -141,8 +107,6 @@ else
     let g:transparent_groups += ['BufferLineFill']
 endif
 
-" lualine
-" let g:transparent_groups += ['lualine']
 
 autocmd BufEnter *.rs hi CocSemTypeMacro guifg=#FFC0A0
 autocmd BufLeave *.rs hi CocSemTypeMacro guifg=#C56FFF

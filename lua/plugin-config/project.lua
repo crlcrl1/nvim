@@ -1,5 +1,4 @@
 local status, project = pcall(require, "project_nvim")
--- nvim-tree 支持
 vim.g.nvim_tree_respect_buf_cwd = 1
 
 project.setup({

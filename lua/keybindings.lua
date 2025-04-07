@@ -55,3 +55,6 @@ map('n', '<A-c>', ':CopilotChatToggle<CR>', opts)
 
 map('n', '<Leader>ot', ':OverseerToggle<CR>', opts)
 map('n', '<Leader>or', ':OverseerRun<CR>', opts)
+
+-- Floaterm
+map('n', '<F12>', ':FloatermToggle<CR>', opts)
