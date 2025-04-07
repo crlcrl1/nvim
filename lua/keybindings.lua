@@ -58,3 +58,11 @@ map('n', '<Leader>or', ':OverseerRun<CR>', opts)
 
 -- Floaterm
 map('n', '<F12>', ':FloatermToggle<CR>', opts)
+
+-- save
+map('n', '<C-s>', ':w<CR>', opts)
+map("i", "<C-s>", "<Esc>:w<CR>i", opts)
+
+
+-- table mode
+map('n', '<Leader>tm', ':TableModeToggle<CR>', opts)

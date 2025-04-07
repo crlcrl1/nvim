@@ -29,3 +29,21 @@ if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
     vim.g.neovide_cursor_vfx_particle_density = 10.0
 end
+
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.rs",
+    command = "hi CocSemTypeMacro guifg=#FFC0A0",
+})
+vim.api.nvim_create_autocmd("BufLeave", {
+    pattern = "*.rs",
+    command = "hi CocSemTypeMacro guifg=#C56FFF",
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.wgsl",
+    command = "set filetype=wgsl",
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.ll",
+    command = "set filetype=llvm",
+})

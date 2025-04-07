@@ -183,3 +183,5 @@ keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
 keyset("n", "w", "<Plug>(coc-ci-w)", opts)
 keyset("n", "b", "<Plug>(coc-ci-b)", opts)
+
+keyset("n", "<space>y", ":<C-u>CocList -A --normal yank<cr>", opts)
