@@ -47,3 +47,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.ll",
     command = "set filetype=llvm",
 })
+
+vim.diagnostic.config({
+    virtual_lines = { current_line = false }
+})

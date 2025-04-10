@@ -57,7 +57,7 @@ map('n', '<Leader>ot', ':OverseerToggle<CR>', opts)
 map('n', '<Leader>or', ':OverseerRun<CR>', opts)
 
 -- Floaterm
-map('n', '<F12>', ':FloatermToggle<CR>', opts)
+-- map('n', '<F12>', ':FloatermToggle<CR>', opts)
 
 -- save
 map('n', '<C-s>', ':w<CR>', opts)

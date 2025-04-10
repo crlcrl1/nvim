@@ -73,7 +73,13 @@ require('pckr').add {
             require("plugin-config/indent-blankline")
         end
     },
-    'voldikss/vim-floaterm',
+    {
+        'EmilOhlsson/FloatTerm.nvim',
+        config = function()
+            require("plugin-config/float-term")
+        end,
+        cond = keys('n', '<F12>')
+    },
     {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
@@ -141,7 +147,8 @@ require('pckr').add {
         requires = 'kevinhwang91/promise-async',
         config = function()
             require("plugin-config/ufo")
-        end
+        end,
+        cond = event("BufEnter"),
     },
     {
         'ethanholz/nvim-lastplace',
