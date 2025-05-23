@@ -26,7 +26,7 @@ dashboard.section.buttons.val = {
 
 dashboard.section.footer.val = {
     '',
-    '   Powered by Neovim',
+    '   Powered by Neovim',
     '',
 }
 

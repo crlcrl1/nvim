@@ -71,7 +71,8 @@ require('pckr').add {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require("plugin-config/indent-blankline")
-        end
+        end,
+        cond = event("BufEnter"),
     },
     {
         'EmilOhlsson/FloatTerm.nvim',
@@ -196,6 +197,7 @@ require('pckr').add {
         config = function()
             require("debuggers/dap")
             require("debuggers/cpp")
+            require("debuggers/go")
             require("debuggers/ui")
             require("debuggers/python")
             require("debuggers/java")

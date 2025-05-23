@@ -1,15 +1,12 @@
 local dap = require('dap')
-dap.adapters.cppdbg = {
-    id = 'cppdbg',
+dap.adapters.codelldb = {
     type = 'executable',
-    command = '/home/chen/debuggers/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+    command = '/home/crl/.cache/debuggers/codelldb/extension/adapter/codelldb',
 }
 
 dap.adapters.python = function(cb, config)
     if config.request == 'attach' then
-        ---@diagnostic disable-next-line: undefined-field
         local port = (config.connect or config).port
-        ---@diagnostic disable-next-line: undefined-field
         local host = (config.connect or config).host or '127.0.0.1'
         cb({
             type = 'server',
@@ -27,6 +24,26 @@ dap.adapters.python = function(cb, config)
             options = {
                 source_filetype = 'python',
             },
+        })
+    end
+end
+
+dap.adapters.delve = function(callback, config)
+    if config.mode == 'remote' and config.request == 'attach' then
+        callback({
+            type = 'server',
+            host = config.host or '127.0.0.1',
+            port = config.port or '38697'
+        })
+    else
+        callback({
+            type = 'server',
+            port = '${port}',
+            executable = {
+                command = 'dlv',
+                args = { 'dap', '-l', '127.0.0.1:${port}' },
+                detached = vim.fn.has("win32") == 0,
+            }
         })
     end
 end

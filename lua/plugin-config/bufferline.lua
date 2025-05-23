@@ -1,8 +1,7 @@
 vim.opt.termguicolors = true
 require("bufferline").setup {
     options = {
-        diagnostics = "coc",
-        -- 左侧让出 nvim-tree 的位置
+        diagnostics = "nvim_lsp",
         offsets = {
             {
                 filetype = "NvimTree",
@@ -18,7 +17,7 @@ require("bufferline").setup {
             }
         },
 
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        diagnostics_indicator = function(_, _, diagnostics_dict, _)
             local s = " "
             for e, n in pairs(diagnostics_dict) do
                 local sym = e == "error" and " "

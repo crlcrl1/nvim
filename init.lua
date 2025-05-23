@@ -53,15 +53,9 @@ vim.api.nvim_set_keymap("x", "ig", "<Plug>(coc-git-chunk-inner)", { silent = tru
 vim.api.nvim_set_keymap("o", "ag", "<Plug>(coc-git-chunk-outer)", { silent = true })
 vim.api.nvim_set_keymap("x", "ag", "<Plug>(coc-git-chunk-outer)", { silent = true })
 
-vim.api.nvim_set_keymap("n", "<Leader>gv", ":Gvdiffsplit<CR>", { silent = true, noremap = true })
-
-if vim.g.neovide then
-    vim.g.transparent_groups = {}
-else
-    vim.g.transparent_groups = {
-        "Normal", "Comment", "Constant", "Special", "Identifier",
-        "Statement", "PreProc", "Type", "Underlined", "Todo", "String",
-        "LineNr", "NonText", "SignColumn", "CursorLineNr", "EndOfBuffer",
-        "Pmenu", "NormalFloat", "CocFloating", "BufferLineFill",
-    }
-end
+vim.g.transparent_groups = {
+    "Normal", "Comment", "Constant", "Special", "Identifier",
+    "Statement", "PreProc", "Type", "Underlined", "Todo", "String",
+    "LineNr", "NonText", "SignColumn", "CursorLineNr", "EndOfBuffer",
+    "Pmenu", "NormalFloat", "CocFloating", "BufferLineFill",
+}

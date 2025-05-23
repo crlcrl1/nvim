@@ -7,7 +7,7 @@ project.setup({
     },
     patterns = {
         ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".sln", "CMakeLists.txt",
-        "init.vim", "Cargo.toml"
+        "init.vim", "Cargo.toml", "build.gradle", "settings.gradle", "pom.xml", "go.mod"
     },
 })
 

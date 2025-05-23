@@ -2,6 +2,18 @@ vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "󰨄",
+        }
+    },
+    update_in_insert = true,
+    severity_sort = true,
+})
 
 
 
@@ -9,15 +21,6 @@ vim.cmd [[
     autocmd BufReadPre * NvimTreeClose
 ]]
 
-
-vim.cmd [[
-    autocmd BufWrite * lua require('bufferline.diagnostics').refresh_coc_diagnostics()
-]]
-
-
-vim.cmd [[
-    autocmd BufWrite * lua require("nvim-tree.diagnostics").update_coc()
-]]
 
 if vim.g.neovide then
     vim.o.guifont = "JetBrainsMonoNL Nerd Font:h23"
@@ -28,6 +31,16 @@ if vim.g.neovide then
     vim.g.neovide_floating_shadow = false
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
     vim.g.neovide_cursor_vfx_particle_density = 10.0
+    vim.g.neovide_opacity = 1
+    vim.g.neovide_normal_opacity = 0.8
+    vim.g.neovide_hide_mouse_when_typing = false
+    vim.g.neovide_floating_corner_radius = 0.3
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 10
+    vim.g.neovide_light_angle_degrees = 45
+    vim.g.neovide_light_radius = 10
+    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_cursor_animate_in_insert_mode = true
 end
 
 

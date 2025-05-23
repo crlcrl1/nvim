@@ -33,13 +33,11 @@
         "default": " "
     },
     "suggest.labelMaxLength": 60,
-    "diagnostic.errorSign": "",
-    "diagnostic.warningSign": "",
-    "diagnostic.infoSign": "",
-    "diagnostic.hintSign": "󰨄",
-    "diagnostic.virtualTextPrefix": " ❯❯❯ ",
-    "diagnostic.virtualText": true,
+    "diagnostic.virtualText": false,
     "diagnostic.enableMessage": "always",
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.displayByVimDiagnostic": true,
     "codeLens.enable": true,
 
     "suggest.floatConfig": {
@@ -64,7 +62,8 @@
     },
     "cmake.formatter_args": ["--tab-size=4"],
     "colors.enable": true,
-
+    "rust-analyzer.inlayHints.maxLength": 20,
+    "rust-analyzer.lru.capacity": 512,
     "list.floatPreview": true,
 
     "semanticTokens.enable": true,
@@ -106,7 +105,7 @@
 
     "snippets.ultisnips.directories": [
         "UltiSnips",
-        "$HOME/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips"
+        "$HOME/.local/share/nvim/site/pack/pckr/opt/vim-snippets/UltiSnips"
     ],
 
     "sumneko-lua.enableNvimLuaDev": true,
@@ -125,6 +124,11 @@
                     "enable": true
                 }
             }
+        },
+        "hyprls": {
+            "command": "hyprls",
+            "filetypes": ["hyprlang"]
         }
-    }
+    },
+    "go.goplsPath": "/usr/bin/gopls"
 }

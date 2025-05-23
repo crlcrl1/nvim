@@ -1,7 +1,6 @@
 local config = {
     options = {
         icons_enabled = true,
-        -- theme = 'arctic',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -19,13 +18,17 @@ local config = {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics', {
-            function()
-                return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
-            end,
-            padding = { right = 1, left = 1 },
-            separator = { left = "", right = "" },
+        lualine_b = { 'branch', 'diff', {
+            'diagnostics',
+            sources = { 'nvim_diagnostic' },
         },
+            {
+                function()
+                    return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
+                end,
+                padding = { right = 1, left = 1 },
+                separator = { left = "", right = "" },
+            },
         },
         lualine_c = { 'filename', 'g:coc_status', },
         lualine_x = {
