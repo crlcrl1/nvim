@@ -12,3 +12,7 @@ vim.keymap.set('n', '<F12>', float_term.toggle_window, {
     noremap = true,
     desc = 'Toggle floating terminal',
 })
+vim.keymap.set('t', '<F12>', float_term.toggle_window, {
+    noremap = true,
+    desc = 'Toggle floating terminal',
+})

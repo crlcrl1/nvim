@@ -16,6 +16,7 @@ vim.opt.colorcolumn = "100"
 vim.opt.mouse = "a"
 vim.opt.shiftround = true
 vim.opt.wrap = false
+vim.opt.updatetime = 200
 
 vim.opt.wildmenu = true
 vim.opt.pumheight = 10

@@ -13,7 +13,7 @@
         "function": "󰊕",
         "reference": "",
         "constant": "",
-        "method": "",
+        "method": "",
         "struct": "",
         "class": "",
         "interface": "",
@@ -67,10 +67,6 @@
     "list.floatPreview": true,
 
     "semanticTokens.enable": true,
-    "[python]": {
-        "semanticTokens.enable": false,
-        "inlayHint.enable": false
-    },
     "clangd.compilationDatabaseCandidates": [
         "${workspaceFolder}/Release",
         "${workspaceFolder}/Debug",
@@ -89,9 +85,10 @@
     "prettier.tabWidth": 4,
     "prettier.disableLanguages": ["markdown"],
 
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Args": ["--max-line-length", "100"],
-    "python.formatting.blackArgs": ["--line-length", "100", "-t", "py310"],
+    "basedpyright.analysis.autoSearchPaths": true,
+    "basedpyright.analysis.typeCheckingMode": "standard",
+    "ruff.lint.args": ["--config", "target-version = \"py314\""],
+    "ruff.lineLength": 100,
 
     "coc.preferences.formatOnSave": true,
     "coc.preferences.formatOnType": true,
@@ -112,10 +109,6 @@
     "snippets.ultisnips.pythonPrompt": false,
 
     "languageserver": {
-        "termux": {
-            "command": "termux-language-server",
-            "filetypes": ["PKGBUILD"]
-        },
         "wgsl": {
             "command": "wgsl-analyzer",
             "filetypes": ["wgsl"],

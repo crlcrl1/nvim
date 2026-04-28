@@ -62,5 +62,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 vim.diagnostic.config({
-    virtual_lines = { current_line = false }
+    -- virtual_lines = { current_line = true },
+    virtual_text = true
 })

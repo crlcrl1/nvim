@@ -40,6 +40,7 @@ require('pckr').add {
             require("plugin-config/nvim-treesitter")
             require("plugin-config/context")
         end,
+        -- branch = 'main'
 
     },
     'nvim-neotest/nvim-nio',
@@ -107,7 +108,7 @@ require('pckr').add {
         'ahmedkhalf/project.nvim',
         config = function()
             require("plugin-config/project")
-        end
+        end,
     },
     {
         'dhruvasagar/vim-table-mode',
@@ -118,6 +119,7 @@ require('pckr').add {
         config = function()
             require("plugin-config/coc")
         end,
+        -- run = 'npm ci',
         branch = 'release',
     },
     {
@@ -136,10 +138,17 @@ require('pckr').add {
         cond = event("BufEnter"),
     },
     'gcmt/wildfire.vim',
+    -- {
+    --     'github/copilot.vim',
+    --     config = function()
+    --         vim.cmd("silent! Copilot")
+    --     end,
+    --     cond = event("InsertEnter"),
+    -- },
     {
-        'github/copilot.vim',
+        'luozhiya/fittencode.nvim',
         config = function()
-            vim.cmd("silent! Copilot")
+            require('fittencode').setup()
         end,
         cond = event("InsertEnter"),
     },
