@@ -34,13 +34,13 @@ require('pckr').add {
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
         requires = { 'nvim-treesitter/nvim-treesitter-context' },
         run = ':TSUpdate',
         config = function()
             require("plugin-config/nvim-treesitter")
             require("plugin-config/context")
         end,
-        -- branch = 'main'
 
     },
     'nvim-neotest/nvim-nio',
