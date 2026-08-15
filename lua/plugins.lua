@@ -146,9 +146,9 @@ require('pckr').add {
     --     cond = event("InsertEnter"),
     -- },
     {
-        'luozhiya/fittencode.nvim',
+        'milanglacier/minuet-ai.nvim',
         config = function()
-            require('fittencode').setup()
+            require('plugin-config.minuet')
         end,
         cond = event("InsertEnter"),
     },
@@ -232,5 +232,6 @@ require('pckr').add {
     {
         'dstein64/vim-startuptime',
         cond = cmd('StartupTime'),
-    }
+    },
+    'OXY2DEV/markview.nvim',
 }

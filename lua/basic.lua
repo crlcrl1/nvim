@@ -60,6 +60,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.ll",
     command = "set filetype=llvm",
 })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.b.minuet_virtual_text_auto_trigger = true
+    end,
+})
 
 vim.diagnostic.config({
     -- virtual_lines = { current_line = true },

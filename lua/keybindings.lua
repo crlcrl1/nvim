@@ -66,3 +66,6 @@ map("i", "<C-s>", "<Esc>:w<CR>i", opts)
 
 -- table mode
 map('n', '<Leader>tm', ':TableModeToggle<CR>', opts)
+
+-- markdown preview
+map('n', '<C-p>', ':Markview splitToggle<CR>', opts)
