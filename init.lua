@@ -8,6 +8,10 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.foldenable = false
 vim.opt.foldmethod = "indent"
+if (os.getenv("SSH_TTY") or os.getenv("SSH_CONNECTION"))
+    and not (os.getenv("DISPLAY") or os.getenv("WAYLAND_DISPLAY")) then
+    vim.g.clipboard = "osc52"
+end
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8

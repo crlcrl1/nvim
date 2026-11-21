@@ -75,21 +75,22 @@
     ],
     "java.configuration.runtimes": [
         {
-            "name": "JavaSE-21",
-            "path": "~/.sdkman/candidates/java/current",
+            "name": "JavaSE-25",
+            "path": "/usr/lib/jvm/default",
             "default": true
         }
     ],
-    "java.saveActions.organizeImports": true,
+    "editor.codeActionsOnSave": {
+        "organizeImports": true
+    },
 
     "prettier.tabWidth": 4,
     "prettier.disableLanguages": ["markdown"],
 
-    "basedpyright.enable": false,
-    "basedpyright.analysis.autoSearchPaths": true,
-    "basedpyright.analysis.typeCheckingMode": "standard",
     "ruff.lint.args": ["--config", "target-version = \"py314\""],
     "ruff.lineLength": 100,
+
+    "coc-qml.qmllsPath": "/usr/lib/qt6/bin/qmlls",
 
     "coc.preferences.formatOnSave": true,
     "coc.preferences.formatOnType": true,
@@ -119,10 +120,6 @@
                 }
             }
         },
-        "hyprls": {
-            "command": "hyprls",
-            "filetypes": ["hyprlang"]
-        },
         "ty": {
             "command": "ty",
             "args": ["server"],
@@ -136,7 +133,29 @@
         "mojo": {
             "command": "mojo-lsp-server",
             "filetypes": ["mojo"]
+        },
+        "dup-detector": {
+            "command": "/home/crl/.cargo/bin/dup-detector",
+            "args": ["lsp"],
+            "filetypes": [
+                "rust",
+                "python",
+                "javascript",
+                "typescript",
+                "typescriptreact",
+                "cpp",
+                "c",
+                "java",
+                "go"
+            ],
+            "rootPatterns": ["dup-detector.toml", ".git"]
         }
     },
-    "go.goplsPath": "/usr/bin/gopls"
+    "go.goplsPath": "/usr/bin/gopls",
+    "json.schemaDownload.trustedDomains": {
+      "https://opencode.ai": true,
+      "https://models.dev": true,
+      "https://github.com": true
+    },
+    "tombi.path": "/usr/bin/tombi"
 }

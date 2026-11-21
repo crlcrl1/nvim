@@ -69,3 +69,6 @@ map('n', '<Leader>tm', ':TableModeToggle<CR>', opts)
 
 -- markdown preview
 map('n', '<C-p>', ':Markview splitToggle<CR>', opts)
+
+map('n', 'j', "v:count == 0 && &wrap ? 'gj' : 'j'", { noremap = true, silent = true, expr = true })
+map('n', 'k', "v:count == 0 && &wrap ? 'gk' : 'k'", { noremap = true, silent = true, expr = true })

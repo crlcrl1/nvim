@@ -71,3 +71,13 @@ vim.diagnostic.config({
     -- virtual_lines = { current_line = true },
     virtual_text = true
 })
+
+vim.o.wrap = false
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "text", "txt", "plaintex", "tex" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.breakindent = true
+    end,
+})
